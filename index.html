@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XYZ Railways</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="logo">XYZ</div>
+          <div>
+            <h1>Railways</h1>
+            <p>Smart travel dashboard</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" data-target="home">Home</button>
+          <button class="nav-item" data-target="admin">Admin</button>
+          <button class="nav-item" data-target="user">User</button>
+          <button class="nav-item" data-target="booking">Booking</button>
+          <button class="nav-item" data-target="food">E-Catering</button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="eyebrow">Quick stats</p>
+          <h3>1,248</h3>
+          <span>Tickets booked today</span>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Welcome back</p>
+            <h2 id="welcomeTitle">XYZ Railways</h2>
+          </div>
+          <button class="primary-btn" data-open="booking">Book a journey</button>
+        </header>
+
+        <div id="toast" class="toast" aria-live="polite"></div>
+
+        <section id="home" class="screen active">
+          <div class="hero">
+            <div class="hero-copy">
+              <span class="badge">Fast • Safe • Comfortable</span>
+              <h3>Travel smarter across the nation.</h3>
+              <p>
+                Book trains, manage passengers, track tickets, and order meals with a modern rail management experience.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-btn" data-open="booking">Book now</button>
+                <button class="secondary-btn" data-open="admin">Admin login</button>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="ticket-card">
+                <div class="rail-line"></div>
+                <div class="ticket-row">
+                  <span>PNR</span>
+                  <strong>10038475</strong>
+                </div>
+                <div class="ticket-row">
+                  <span>From</span>
+                  <strong>Delhi</strong>
+                </div>
+                <div class="ticket-row">
+                  <span>To</span>
+                  <strong>Mumbai</strong>
+                </div>
+                <div class="ticket-row">
+                  <span>Train</span>
+                  <strong>DEL-123</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-grid">
+            <div class="card-box">
+              <div class="panel-header compact">
+                <h3>Recent bookings</h3>
+              </div>
+              <div id="recentBookings" class="recent-bookings">
+                <p class="muted-empty">No bookings yet. Start your first journey.</p>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="panel-header compact">
+                <h3>Current session</h3>
+              </div>
+              <div class="session-card">
+                <span class="session-label">Logged in as</span>
+                <strong id="currentUserLabel">Guest</strong>
+                <button class="secondary-btn full" id="logoutBtn">Log out</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>Available Trains</span>
+              <strong>42</strong>
+            </article>
+            <article class="stat-card">
+              <span>Passengers</span>
+              <strong>8.4k</strong>
+            </article>
+            <article class="stat-card">
+              <span>Ticket Revenue</span>
+              <strong>₹24.8L</strong>
+            </article>
+            <article class="stat-card">
+              <span>Food Orders</span>
+              <strong>1.2k</strong>
+            </article>
+          </div>
+        </section>
+
+        <section id="admin" class="screen">
+          <div class="panel-header">
+            <h3>Admin Portal</h3>
+          </div>
+          <div class="auth-box">
+            <label>
+              <span>Username</span>
+              <input id="adminUsername" type="text" value="admin" />
+            </label>
+            <label>
+              <span>Password</span>
+              <input id="adminPassword" type="password" value="admin" />
+            </label>
+            <button class="primary-btn full" id="adminLoginBtn">Login</button>
+          </div>
+        </section>
+
+        <section id="user" class="screen">
+          <div class="panel-header">
+            <h3>User Access</h3>
+          </div>
+          <div class="auth-grid">
+            <div class="auth-box">
+              <h4>Create account</h4>
+              <label>
+                <span>New ID</span>
+                <input id="createUserId" type="text" placeholder="Enter new user ID" />
+              </label>
+              <label>
+                <span>Password</span>
+                <input id="createUserPassword" type="password" placeholder="Create password" />
+              </label>
+              <button class="primary-btn full" id="createAccountBtn">Create account</button>
+            </div>
+
+            <div class="auth-box">
+              <h4>Login</h4>
+              <label>
+                <span>User ID</span>
+                <input id="loginUserId" type="text" placeholder="Enter ID" />
+              </label>
+              <label>
+                <span>Password</span>
+                <input id="loginUserPassword" type="password" placeholder="Enter password" />
+              </label>
+              <button class="secondary-btn full" id="userLoginBtn">Login</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="booking" class="screen">
+          <div class="panel-header">
+            <h3>Train Booking</h3>
+          </div>
+
+          <div class="booking-layout">
+            <div class="booking-form card-box">
+              <label>
+                <span>Destination</span>
+                <select id="destinationSelect">
+                  <option value="Delhi">Delhi</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Patna">Patna</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Mumbai">Mumbai</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Train</span>
+                <select id="trainSelect"></select>
+              </label>
+
+              <label>
+                <span>Class</span>
+                <select id="classSelect">
+                  <option value="3A">3A - ₹2,100</option>
+                  <option value="2A">2A - ₹3,100</option>
+                  <option value="1A">1A - ₹5,200</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Passengers</span>
+                <input id="passengerCount" type="number" min="1" max="6" value="1" />
+              </label>
+
+              <button class="primary-btn full" id="bookTicketBtn">Confirm booking</button>
+            </div>
+
+            <div class="booking-summary card-box">
+              <h4>Booking summary</h4>
+              <div class="summary-row"><span>Destination</span><strong id="summaryDestination">Delhi</strong></div>
+              <div class="summary-row"><span>Train</span><strong id="summaryTrain">DEL-123</strong></div>
+              <div class="summary-row"><span>Class</span><strong id="summaryClass">3A</strong></div>
+              <div class="summary-row"><span>Passengers</span><strong id="summaryPassengers">1</strong></div>
+              <div class="summary-row total"><span>Total</span><strong id="summaryTotal">₹2,100</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="food" class="screen">
+          <div class="panel-header">
+            <h3>E-Catering</h3>
+          </div>
+
+          <div class="food-grid" id="foodGrid"></div>
+          <button class="primary-btn" id="placeFoodOrderBtn">Place food order</button>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
