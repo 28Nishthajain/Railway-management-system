@@ -25,6 +25,7 @@
           <button class="nav-item" data-target="admin">Admin</button>
           <button class="nav-item" data-target="user">User</button>
           <button class="nav-item" data-target="booking">Booking</button>
+          <button class="nav-item" data-target="pnr">PNR Enquiry</button>
           <button class="nav-item" data-target="food">E-Catering</button>
         </nav>
 
@@ -64,7 +65,7 @@
                 <div class="rail-line"></div>
                 <div class="ticket-row">
                   <span>PNR</span>
-                  <strong>10038475</strong>
+                  <strong>1003847501</strong>
                 </div>
                 <div class="ticket-row">
                   <span>From</span>
@@ -141,6 +142,75 @@
           </div>
         </section>
 
+        <section id="adminDashboard" class="screen">
+          <div class="panel-header">
+            <h3>Train Management Dashboard</h3>
+            <button class="secondary-btn" id="adminDashboardLogoutBtn">Log out</button>
+          </div>
+
+          <div class="stats-grid admin-stats">
+            <article class="stat-card">
+              <span>Trains</span>
+              <strong id="adminTrainCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Bookings</span>
+              <strong id="adminBookingCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Booking Revenue</span>
+              <strong id="adminBookingRevenue">₹0</strong>
+            </article>
+          </div>
+
+          <div class="admin-management-layout">
+            <form class="auth-box card-box" id="addTrainForm">
+              <h4>Add a train</h4>
+              <label>
+                <span>Destination</span>
+                <select id="adminTrainCity">
+                  <option value="Delhi">Delhi</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Patna">Patna</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Mumbai">Mumbai</option>
+                </select>
+              </label>
+              <label>
+                <span>Train code</span>
+                <input id="adminTrainCode" type="text" placeholder="e.g. DEL-789" required />
+              </label>
+              <label>
+                <span>Base fare (₹)</span>
+                <input id="adminTrainFare" type="number" min="1" step="1" placeholder="e.g. 2000" required />
+              </label>
+              <button class="primary-btn full" type="submit">Add train</button>
+            </form>
+
+            <div class="card-box admin-trains-card">
+              <div class="panel-header compact">
+                <h4>Train inventory</h4>
+              </div>
+              <div class="table-scroll">
+                <table class="management-table">
+                  <thead>
+                    <tr><th>Destination</th><th>Train</th><th>Base fare</th><th></th></tr>
+                  </thead>
+                  <tbody id="adminTrainRows"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-box admin-bookings-card">
+            <div class="panel-header compact">
+              <h4>Recent bookings</h4>
+            </div>
+            <div id="adminBookings" class="recent-bookings"></div>
+          </div>
+        </section>
+
         <section id="user" class="screen">
           <div class="panel-header">
             <h3>User Access</h3>
@@ -199,6 +269,11 @@
               </label>
 
               <label>
+                <span>Travel date</span>
+                <input id="travelDate" type="date" required />
+              </label>
+
+              <label>
                 <span>Class</span>
                 <select id="classSelect">
                   <option value="3A">3A - ₹2,100</option>
@@ -219,11 +294,49 @@
               <h4>Booking summary</h4>
               <div class="summary-row"><span>Destination</span><strong id="summaryDestination">Delhi</strong></div>
               <div class="summary-row"><span>Train</span><strong id="summaryTrain">DEL-123</strong></div>
+              <div class="summary-row"><span>Travel date</span><strong id="summaryTravelDate">—</strong></div>
               <div class="summary-row"><span>Class</span><strong id="summaryClass">3A</strong></div>
               <div class="summary-row"><span>Passengers</span><strong id="summaryPassengers">1</strong></div>
+              <div class="summary-row"><span>Seats</span><strong id="summarySeats">Select seats</strong></div>
               <div class="summary-row total"><span>Total</span><strong id="summaryTotal">₹2,100</strong></div>
             </div>
           </div>
+
+          <div class="seat-selection card-box">
+            <div class="panel-header seat-selection-header">
+              <div>
+                <h4>Choose your seats</h4>
+                <p id="seatAvailabilityLabel" class="seat-availability"></p>
+              </div>
+              <label class="coach-picker">
+                <span>Coach</span>
+                <select id="coachSelect"></select>
+              </label>
+            </div>
+            <div class="seat-legend" aria-label="Seat availability legend">
+              <span><i class="seat-key available"></i>Available</span>
+              <span><i class="seat-key selected"></i>Selected</span>
+              <span><i class="seat-key occupied"></i>Occupied</span>
+            </div>
+            <div id="seatMap" class="seat-map" role="group" aria-label="Coach seat layout"></div>
+            <p id="selectedSeatsLabel" class="selected-seats-label" aria-live="polite"></p>
+          </div>
+
+          <div id="ticketResult" class="ticket-result card-box" hidden aria-live="polite"></div>
+        </section>
+
+        <section id="pnr" class="screen">
+          <div class="panel-header">
+            <h3>PNR Enquiry &amp; Cancellation</h3>
+          </div>
+          <form id="pnrEnquiryForm" class="pnr-enquiry-form card-box">
+            <label>
+              <span>10-digit PNR</span>
+              <input id="pnrInput" type="text" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your PNR" required />
+            </label>
+            <button class="primary-btn" type="submit">Find booking</button>
+          </form>
+          <div id="pnrEnquiryResult" class="ticket-result card-box" hidden aria-live="polite"></div>
         </section>
 
         <section id="food" class="screen">
