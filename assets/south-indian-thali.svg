@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">South Indian meal</title>
+  <desc id="desc">An illustrated South Indian meal with dosa, idli, chutneys, and sambar.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e2eee0"/>
+      <stop offset="1" stop-color="#f5e8ce"/>
+    </linearGradient>
+    <radialGradient id="plate">
+      <stop stop-color="#fffef8"/>
+      <stop offset=".82" stop-color="#efeee2"/>
+      <stop offset="1" stop-color="#d4d8c9"/>
+    </radialGradient>
+    <linearGradient id="dosa" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f9d782"/>
+      <stop offset="1" stop-color="#d98a36"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="102" cy="86" r="60" fill="#fff" opacity=".28"/>
+  <circle cx="700" cy="397" r="75" fill="#fff" opacity=".24"/>
+  <ellipse cx="400" cy="399" rx="246" ry="29" fill="#38523a" opacity=".17" filter="url(#shadow)"/>
+  <ellipse cx="400" cy="256" rx="252" ry="178" fill="#d3d8c8"/>
+  <ellipse cx="400" cy="246" rx="248" ry="174" fill="url(#plate)" stroke="#fff" stroke-width="8"/>
+  <ellipse cx="400" cy="246" rx="220" ry="148" fill="none" stroke="#d9ddd1" stroke-width="3"/>
+  <path d="M251 169c8-28 43-38 70-18l140 107c21 16 21 47-3 61l-23 13c-17 10-39 6-51-9L257 205c-9-10-12-24-6-36Z" fill="#d28a3c" opacity=".28"/>
+  <path d="M245 159c8-28 43-38 70-18l140 107c21 16 21 47-3 61l-23 13c-17 10-39 6-51-9L251 195c-9-10-12-24-6-36Z" fill="url(#dosa)" stroke="#d59a4c" stroke-width="4"/>
+  <path d="M259 165c11-15 30-19 45-9l136 105c12 9 14 26 4 38" fill="none" stroke="#ffe7a4" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="517" cy="204" rx="61" ry="48" fill="#fff" stroke="#e0dfd4" stroke-width="5"/>
+  <ellipse cx="517" cy="204" rx="49" ry="37" fill="#f4f0e5"/>
+  <g fill="#fffdf5" stroke="#e5e1d4" stroke-width="3">
+    <circle cx="502" cy="194" r="21"/>
+    <circle cx="533" cy="193" r="21"/>
+    <circle cx="518" cy="221" r="21"/>
+  </g>
+  <g fill="#d7d0bc">
+    <circle cx="496" cy="188" r="3"/><circle cx="529" cy="188" r="3"/>
+    <circle cx="515" cy="216" r="3"/>
+  </g>
+  <circle cx="300" cy="327" r="48" fill="#fff" stroke="#e2ded1" stroke-width="5"/>
+  <circle cx="300" cy="327" r="37" fill="#f0a94c"/>
+  <circle cx="300" cy="327" r="26" fill="#df8738"/>
+  <circle cx="493" cy="327" r="43" fill="#fff" stroke="#e2ded1" stroke-width="5"/>
+  <circle cx="493" cy="327" r="32" fill="#8cae62"/>
+  <path d="M478 325c10-11 21-12 31-4M479 336c10-7 21-7 30-1" fill="none" stroke="#c6d98d" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="585" cy="296" r="34" fill="#fff" stroke="#e2ded1" stroke-width="5"/>
+  <circle cx="585" cy="296" r="24" fill="#e8c15d"/>
+  <path d="M571 297c9-8 18-8 28-2" fill="none" stroke="#fff0a5" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#73a052">
+    <path d="M212 295c20-14 41-10 52 5-17 17-39 18-52-5Z"/>
+    <path d="M216 308c19-4 35-1 48 10" fill="none" stroke="#527b40" stroke-width="3"/>
+  </g>
+</svg>

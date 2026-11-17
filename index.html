@@ -25,7 +25,13 @@
           <button class="nav-item" data-target="admin">Admin</button>
           <button class="nav-item" data-target="user">User</button>
           <button class="nav-item" data-target="booking">Booking</button>
+          <button class="nav-item" data-target="routeFinder">Route Finder</button>
+          <button class="nav-item" data-target="liveStatus">Live Train Status</button>
+          <button class="nav-item" data-target="waitlist">Waitlist Prediction</button>
+          <button class="nav-item" data-target="delayPrediction">Delay Prediction</button>
+          <button class="nav-item" data-target="chatbot">Railway Assistant</button>
           <button class="nav-item" data-target="pnr">PNR Enquiry</button>
+          <button class="nav-item" data-target="assistance">Passenger Assistance</button>
           <button class="nav-item" data-target="food">E-Catering</button>
         </nav>
 
@@ -154,28 +160,25 @@
               <strong id="adminTrainCount">0</strong>
             </article>
             <article class="stat-card">
-              <span>Bookings</span>
+              <span>Passengers</span>
+              <strong id="adminPassengerCount">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Active bookings</span>
               <strong id="adminBookingCount">0</strong>
             </article>
             <article class="stat-card">
-              <span>Booking Revenue</span>
+              <span>Active ticket revenue</span>
               <strong id="adminBookingRevenue">₹0</strong>
             </article>
           </div>
 
           <div class="admin-management-layout">
             <form class="auth-box card-box" id="addTrainForm">
-              <h4>Add a train</h4>
+              <h4 id="trainFormTitle">Add a train</h4>
               <label>
                 <span>Destination</span>
-                <select id="adminTrainCity">
-                  <option value="Delhi">Delhi</option>
-                  <option value="Kolkata">Kolkata</option>
-                  <option value="Patna">Patna</option>
-                  <option value="Nagpur">Nagpur</option>
-                  <option value="Jaipur">Jaipur</option>
-                  <option value="Mumbai">Mumbai</option>
-                </select>
+                <select id="adminTrainCity"></select>
               </label>
               <label>
                 <span>Train code</span>
@@ -185,7 +188,8 @@
                 <span>Base fare (₹)</span>
                 <input id="adminTrainFare" type="number" min="1" step="1" placeholder="e.g. 2000" required />
               </label>
-              <button class="primary-btn full" type="submit">Add train</button>
+              <button class="primary-btn full" id="trainFormSubmit" type="submit">Add train</button>
+              <button class="secondary-btn full" id="cancelTrainEditBtn" type="button" hidden>Cancel edit</button>
             </form>
 
             <div class="card-box admin-trains-card">
@@ -195,7 +199,7 @@
               <div class="table-scroll">
                 <table class="management-table">
                   <thead>
-                    <tr><th>Destination</th><th>Train</th><th>Base fare</th><th></th></tr>
+                    <tr><th>Destination</th><th>Train</th><th>Base fare</th><th>Actions</th></tr>
                   </thead>
                   <tbody id="adminTrainRows"></tbody>
                 </table>
@@ -203,11 +207,128 @@
             </div>
           </div>
 
+          <div class="admin-management-layout">
+            <div class="card-box">
+              <div class="panel-header compact">
+                <h4>Station management</h4>
+              </div>
+              <form id="addStationForm" class="admin-inline-form">
+                <label>
+                  <span>New station</span>
+                  <input id="newStationName" type="text" maxlength="50" placeholder="Station name" required />
+                </label>
+                <button class="primary-btn" type="submit">Add station</button>
+              </form>
+              <div class="table-scroll">
+                <table class="management-table">
+                  <thead><tr><th>Station</th><th>Actions</th></tr></thead>
+                  <tbody id="adminStationRows"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card-box">
+              <div class="panel-header compact">
+                <h4>Route management</h4>
+              </div>
+              <form id="addRouteForm" class="admin-route-form">
+                <label>
+                  <span>From station</span>
+                  <select id="routeOriginSelect"></select>
+                </label>
+                <label>
+                  <span>To station</span>
+                  <select id="routeDestinationSelect"></select>
+                </label>
+                <button class="primary-btn" type="submit">Add route</button>
+              </form>
+              <div class="table-scroll">
+                <table class="management-table">
+                  <thead><tr><th>Origin</th><th>Destination</th><th>Actions</th></tr></thead>
+                  <tbody id="adminRouteRows"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-report card-box">
+            <div class="panel-header compact">
+              <h4>Booking reports</h4>
+            </div>
+            <div class="admin-report-controls">
+              <label>
+                <span>Report period</span>
+                <select id="reportPeriodSelect">
+                  <option value="daily">Daily</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </label>
+              <label>
+                <span>Report date</span>
+                <input id="reportDateInput" type="date" />
+              </label>
+            </div>
+            <div class="admin-report-grid">
+              <article><span>Bookings created</span><strong id="reportBookingCount">0</strong></article>
+              <article><span>Active passengers</span><strong id="reportPassengerCount">0</strong></article>
+              <article><span>Active ticket revenue</span><strong id="reportRevenue">₹0</strong></article>
+            </div>
+          </div>
+
           <div class="card-box admin-bookings-card">
             <div class="panel-header compact">
-              <h4>Recent bookings</h4>
+              <h4>Passenger management</h4>
             </div>
-            <div id="adminBookings" class="recent-bookings"></div>
+            <div class="table-scroll">
+              <table class="management-table">
+                <thead>
+                  <tr><th>Passenger</th><th>PNR</th><th>Train / route</th><th>Travel date</th><th>Class</th><th>Seat</th><th>Status</th></tr>
+                </thead>
+                <tbody id="adminPassengerRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-box admin-bookings-card">
+            <div class="panel-header compact">
+              <h4>Passenger assistance requests</h4>
+            </div>
+            <div class="table-scroll">
+              <table class="management-table">
+                <thead>
+                  <tr><th>Passenger</th><th>PNR</th><th>Train / route</th><th>Travel date</th><th>Request</th><th>Progress</th></tr>
+                </thead>
+                <tbody id="adminAssistanceRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-box admin-bookings-card">
+            <div class="panel-header compact">
+              <h4>All bookings</h4>
+            </div>
+            <div class="table-scroll">
+              <table class="management-table">
+                <thead>
+                  <tr><th>PNR</th><th>Train / route</th><th>Travel date</th><th>Passengers</th><th>Class</th><th>Seats</th><th>Fare</th><th>Status</th></tr>
+                </thead>
+                <tbody id="adminBookingRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-box admin-pnr-card">
+            <div class="panel-header compact">
+              <h4>PNR verification</h4>
+            </div>
+            <form id="adminPnrSearchForm" class="pnr-enquiry-form">
+              <label>
+                <span>10-digit PNR</span>
+                <input id="adminPnrInput" type="text" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="Enter PNR to verify" required />
+              </label>
+              <button class="primary-btn" type="submit">Verify PNR</button>
+            </form>
+            <div id="adminPnrResult" class="ticket-result" hidden aria-live="polite"></div>
           </div>
         </section>
 
@@ -244,6 +365,45 @@
           </div>
         </section>
 
+        <section id="routeFinder" class="screen">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Plan your journey</p>
+              <h3>Smart Train Route Finder</h3>
+            </div>
+          </div>
+          <p class="prediction-demo-note">
+            Routes use the stations and connections configured by the admin. “Shortest” means fewest train legs; the app has no journey-time timetable.
+          </p>
+          <form id="routeFinderForm" class="route-finder-form card-box">
+            <label>
+              <span>From station</span>
+              <select id="routeFinderOrigin"></select>
+            </label>
+            <label>
+              <span>To station</span>
+              <select id="routeFinderDestination"></select>
+            </label>
+            <label>
+              <span>Class for fare estimates</span>
+              <select id="routeFinderClass">
+                <option value="3A">3A - AC 3-tier</option>
+                <option value="2A">2A - AC 2-tier</option>
+                <option value="1A">1A - AC First Class</option>
+              </select>
+            </label>
+            <label>
+              <span>Optimize by</span>
+              <select id="routeFinderPreference">
+                <option value="shortest">Fewest train legs</option>
+                <option value="cheapest">Lowest fare</option>
+              </select>
+            </label>
+            <button class="primary-btn" type="submit">Find routes</button>
+          </form>
+          <div id="routeFinderResult" class="route-finder-result" hidden aria-live="polite"></div>
+        </section>
+
         <section id="booking" class="screen">
           <div class="panel-header">
             <h3>Train Booking</h3>
@@ -251,6 +411,11 @@
 
           <div class="booking-layout">
             <div class="booking-form card-box">
+              <label>
+                <span>Origin</span>
+                <select id="originSelect"></select>
+              </label>
+
               <label>
                 <span>Destination</span>
                 <select id="destinationSelect">
@@ -276,9 +441,9 @@
               <label>
                 <span>Class</span>
                 <select id="classSelect">
-                  <option value="3A">3A - ₹2,100</option>
-                  <option value="2A">2A - ₹3,100</option>
-                  <option value="1A">1A - ₹5,200</option>
+                  <option value="3A">3A - AC 3-tier</option>
+                  <option value="2A">2A - AC 2-tier</option>
+                  <option value="1A">1A - AC First Class</option>
                 </select>
               </label>
 
@@ -287,17 +452,28 @@
                 <input id="passengerCount" type="number" min="1" max="6" value="1" />
               </label>
 
-              <button class="primary-btn full" id="bookTicketBtn">Confirm booking</button>
+              <div id="passengerDetailsFields" class="passenger-fields"></div>
+
+              <div class="booking-actions">
+                <button class="primary-btn full" id="bookTicketBtn">Confirm booking</button>
+                <button class="secondary-btn full" id="joinWaitlistBtn" type="button" hidden>Join RAC / waitlist</button>
+              </div>
+              <p class="assistance-privacy-note">Assistance details are optional and stored only with this browser’s demo booking. No medical diagnosis is requested.</p>
+              <p class="waitlist-demo-note">When no coach can fit your party, request RAC / waitlist placement. Cancellations promote whole bookings in FIFO order.</p>
             </div>
 
             <div class="booking-summary card-box">
               <h4>Booking summary</h4>
+              <p class="fare-note">Fare = train base fare × class multiplier × passengers (3A ×1, 2A ×1.4, 1A ×2.3).</p>
+              <div class="summary-row"><span>Origin</span><strong id="summaryOrigin">Origin Station</strong></div>
               <div class="summary-row"><span>Destination</span><strong id="summaryDestination">Delhi</strong></div>
               <div class="summary-row"><span>Train</span><strong id="summaryTrain">DEL-123</strong></div>
               <div class="summary-row"><span>Travel date</span><strong id="summaryTravelDate">—</strong></div>
               <div class="summary-row"><span>Class</span><strong id="summaryClass">3A</strong></div>
               <div class="summary-row"><span>Passengers</span><strong id="summaryPassengers">1</strong></div>
               <div class="summary-row"><span>Seats</span><strong id="summarySeats">Select seats</strong></div>
+              <div class="summary-row"><span>Base fare</span><strong id="summaryBaseFare">₹2,100</strong></div>
+              <div class="summary-row"><span>Class adjustment</span><strong id="summaryClassAdjustment">₹0</strong></div>
               <div class="summary-row total"><span>Total</span><strong id="summaryTotal">₹2,100</strong></div>
             </div>
           </div>
@@ -322,6 +498,47 @@
             <p id="selectedSeatsLabel" class="selected-seats-label" aria-live="polite"></p>
           </div>
 
+          <form id="paymentForm" class="payment-panel card-box" hidden>
+            <div class="panel-header compact">
+              <div>
+                <h4>Payment</h4>
+                <p class="payment-subtitle">Choose a method to complete your booking.</p>
+              </div>
+              <span class="sandbox-badge">Sandbox demo</span>
+            </div>
+            <p class="sandbox-notice">
+              This is a simulated payment only. No money is charged and no payment credentials are collected.
+            </p>
+            <div class="payment-summary">
+              <div class="summary-row"><span>Base fare</span><strong id="paymentBaseFare">—</strong></div>
+              <div class="summary-row"><span>Class adjustment</span><strong id="paymentClassAdjustment">—</strong></div>
+              <div class="summary-row total"><span>Amount to pay</span><strong id="paymentTotal">—</strong></div>
+            </div>
+            <fieldset class="payment-methods">
+              <legend>Payment method</legend>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="UPI" checked />
+                <span><strong>UPI</strong><small>Simulated UPI payment</small></span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="Card" />
+                <span><strong>Debit / credit card</strong><small>Demo only - no card details needed</small></span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="Net banking" />
+                <span><strong>Net banking</strong><small>Simulated bank payment</small></span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" value="Wallet" />
+                <span><strong>Wallet</strong><small>Simulated wallet payment</small></span>
+              </label>
+            </fieldset>
+            <div class="payment-actions">
+              <button class="primary-btn" id="payNowBtn" type="submit">Pay now</button>
+              <button class="secondary-btn" id="cancelPaymentBtn" type="button">Back to booking</button>
+            </div>
+          </form>
+
           <div id="ticketResult" class="ticket-result card-box" hidden aria-live="polite"></div>
         </section>
 
@@ -329,6 +546,9 @@
           <div class="panel-header">
             <h3>PNR Enquiry &amp; Cancellation</h3>
           </div>
+          <p class="cancellation-policy-note">
+            Demo refund policy: 90% at least 2 calendar days before travel, 75% 1 day before, 50% on the travel date, and 0% after travel. Refunds apply only to bookings with a recorded payment.
+          </p>
           <form id="pnrEnquiryForm" class="pnr-enquiry-form card-box">
             <label>
               <span>10-digit PNR</span>
@@ -339,13 +559,234 @@
           <div id="pnrEnquiryResult" class="ticket-result card-box" hidden aria-live="polite"></div>
         </section>
 
-        <section id="food" class="screen">
+        <section id="assistance" class="screen">
           <div class="panel-header">
-            <h3>E-Catering</h3>
+            <div>
+              <p class="eyebrow">Support during travel</p>
+              <h3>Passenger Assistance</h3>
+            </div>
+          </div>
+          <p class="prediction-demo-note">Request priority support for an elderly passenger or passenger with a disability, or ask for wheelchair assistance when booking. Use your PNR below to track the request.</p>
+          <form id="assistanceLookupForm" class="pnr-enquiry-form card-box">
+            <label>
+              <span>10-digit PNR</span>
+              <input id="assistancePnrInput" type="text" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your PNR" required />
+            </label>
+            <button class="primary-btn" type="submit">Track assistance</button>
+          </form>
+          <div id="assistanceLookupResult" class="card-box assistance-lookup-result" hidden aria-live="polite"></div>
+        </section>
+
+        <section id="liveStatus" class="screen">
+          <div class="panel-header">
+            <h3>Live Train Status</h3>
+          </div>
+          <div class="live-status-controls card-box">
+            <label>
+              <span>Destination</span>
+              <select id="statusDestinationSelect">
+                <option value="Delhi">Delhi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Patna">Patna</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Mumbai">Mumbai</option>
+              </select>
+            </label>
+            <label>
+              <span>Train</span>
+              <select id="statusTrainSelect"></select>
+            </label>
+            <label>
+              <span>Demo weather</span>
+              <select id="liveWeatherSelect">
+                <option value="clear">Clear</option>
+                <option value="lightRain">Light rain</option>
+                <option value="heavyRain">Heavy rain</option>
+                <option value="fog">Fog</option>
+              </select>
+            </label>
+            <div class="live-status-actions">
+              <button class="primary-btn" id="toggleSimulationBtn" type="button">Start demo journey</button>
+              <button class="secondary-btn" id="resetSimulationBtn" type="button">Reset</button>
+            </div>
           </div>
 
+          <div class="delay-management-controls card-box">
+            <label>
+              <span>Journey date</span>
+              <input id="statusTravelDate" type="date" required />
+            </label>
+            <label>
+              <span>Operator delay (minutes)</span>
+              <input id="operatorDelayInput" type="number" min="0" max="240" step="1" value="0" />
+            </label>
+            <button class="secondary-btn" id="applyDelayBtn" type="button">Update delay</button>
+            <button class="primary-btn" id="alertPassengersBtn" type="button">Alert passengers</button>
+            <p class="delay-management-note">Delay changes, alerts, and connection impacts are simulated locally. No SMS, email, or live rail feed is used.</p>
+            <div id="delayAlertResult" class="delay-alert-result" hidden aria-live="polite"></div>
+          </div>
+
+          <p class="live-demo-note">
+            Simulated status for demonstration only. The demo route is Origin Station → Midway Junction → selected destination; 5 simulated minutes pass per real second.
+          </p>
+
+          <div class="live-status-grid">
+            <article class="live-status-card">
+              <span>Current location</span>
+              <strong id="liveLocation" aria-live="polite">Start a demo journey to see train movement.</strong>
+            </article>
+            <article class="live-status-card">
+              <span>Departure</span>
+              <strong id="liveDeparture">—</strong>
+            </article>
+            <article class="live-status-card">
+              <span>Expected arrival</span>
+              <strong id="liveArrival">—</strong>
+            </article>
+            <article class="live-status-card">
+              <span>Delay</span>
+              <strong id="liveDelay" class="live-delay on-time">—</strong>
+            </article>
+          </div>
+
+          <div class="live-progress-card card-box">
+            <div class="live-progress-heading">
+              <strong id="liveTrainLabel">Select a train</strong>
+              <span id="liveProgressLabel">Journey not started</span>
+            </div>
+            <div
+              id="liveProgressTrack"
+              class="live-progress-track"
+              role="progressbar"
+              aria-label="Simulated journey progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div id="liveProgressBar" class="live-progress-bar"></div>
+            </div>
+            <div class="live-route-labels">
+              <span id="liveOriginLabel">Origin Station</span>
+              <span>Midway Junction</span>
+              <span id="liveDestinationLabel">Destination</span>
+            </div>
+          </div>
+
+          <div class="live-cascade-card card-box">
+            <div class="panel-header compact">
+              <h4>Simulated cascading delays</h4>
+            </div>
+            <p class="live-demo-note">Each demo connection inherits 75% of the previous delay after a 5-minute recovery buffer. These are illustrative connections, not published train schedules.</p>
+            <div class="table-scroll">
+              <table class="management-table">
+                <thead><tr><th>Service</th><th>Connection point</th><th>Predicted delay</th><th>Expected departure</th></tr></thead>
+                <tbody id="liveCascadeRows"><tr><td class="muted-empty" colspan="4">Start or update a journey to simulate delay propagation.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="waitlist" class="screen">
+          <div class="panel-header">
+            <h3>Waitlist Confirmation Estimate</h3>
+          </div>
+          <p class="prediction-demo-note">
+            Demo estimate from locally stored bookings and cancellations. It assumes the selected train/class is full (72 seats); this is a heuristic, not an official prediction or guarantee.
+          </p>
+          <form id="waitlistPredictionForm" class="prediction-form card-box">
+            <label>
+              <span>Destination</span>
+              <select id="waitlistCitySelect"></select>
+            </label>
+            <label>
+              <span>Train</span>
+              <select id="waitlistTrainSelect"></select>
+            </label>
+            <label>
+              <span>Class</span>
+              <select id="waitlistClassSelect">
+                <option value="3A">3A - AC 3-tier</option>
+                <option value="2A">2A - AC 2-tier</option>
+                <option value="1A">1A - AC First Class</option>
+              </select>
+            </label>
+            <label>
+              <span>Travel date</span>
+              <input id="waitlistTravelDate" type="date" required />
+            </label>
+            <label>
+              <span>Waitlist position</span>
+              <input id="waitlistPosition" type="number" min="1" max="72" value="1" required />
+            </label>
+            <button class="primary-btn" type="submit">Estimate confirmation chance</button>
+          </form>
+          <div id="waitlistResult" class="prediction-result card-box" hidden aria-live="polite"></div>
+        </section>
+
+        <section id="delayPrediction" class="screen">
+          <div class="panel-header">
+            <h3>Train Delay Prediction</h3>
+          </div>
+          <p class="prediction-demo-note">
+            Demo estimate using completed simulated journeys saved in this browser and the selected weather scenario. Weather is entered manually; no live weather or railway feed is used.
+          </p>
+          <div class="prediction-form card-box">
+            <label>
+              <span>Destination</span>
+              <select id="delayCitySelect"></select>
+            </label>
+            <label>
+              <span>Train</span>
+              <select id="delayTrainSelect"></select>
+            </label>
+            <label>
+              <span>Weather scenario</span>
+              <select id="delayWeatherSelect">
+                <option value="clear">Clear</option>
+                <option value="lightRain">Light rain</option>
+                <option value="heavyRain">Heavy rain</option>
+                <option value="fog">Fog</option>
+              </select>
+            </label>
+            <button class="primary-btn" id="predictDelayBtn" type="button">Predict delay</button>
+          </div>
+          <div id="delayPredictionResult" class="prediction-result card-box" hidden aria-live="polite"></div>
+        </section>
+
+        <section id="chatbot" class="screen">
+          <div class="panel-header">
+            <h3>Railway Assistant</h3>
+          </div>
+          <p class="prediction-demo-note">
+            Local rule-based demo assistant. It answers from this app's train, route, booking, and cancellation data; it does not use an external AI service.
+          </p>
+          <div id="chatMessages" class="chat-messages" role="log" aria-live="polite">
+            <p class="chat-message assistant-message">Hello! Ask me about trains, routes, booking, cancellation, or a 10-digit PNR.</p>
+          </div>
+          <form id="chatForm" class="chat-form card-box">
+            <label>
+              <span>Your question</span>
+              <input id="chatInput" type="text" maxlength="300" placeholder="How do I book a ticket?" required />
+            </label>
+            <button class="primary-btn" type="submit">Send</button>
+          </form>
+        </section>
+
+        <section id="food" class="screen">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">On-board dining</p>
+              <h3>E-Catering</h3>
+            </div>
+            <span class="food-menu-count">8 menu favorites</span>
+          </div>
+          <p class="food-intro">Choose a meal for your journey and add it to your demo order.</p>
           <div class="food-grid" id="foodGrid"></div>
-          <button class="primary-btn" id="placeFoodOrderBtn">Place food order</button>
+          <div class="food-order-bar">
+            <span>Review your selected meals before placing the order.</span>
+            <button class="primary-btn" id="placeFoodOrderBtn">Place food order</button>
+          </div>
         </section>
       </main>
     </div>

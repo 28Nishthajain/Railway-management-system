@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">Special chicken biryani meal</title>
+  <desc id="desc">A fragrant-looking chicken biryani with a golden leg piece, raita, and lemon.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f6e2d2"/>
+      <stop offset="1" stop-color="#f3c9b2"/>
+    </linearGradient>
+    <radialGradient id="plate">
+      <stop stop-color="#fffdf8"/>
+      <stop offset=".82" stop-color="#f2eade"/>
+      <stop offset="1" stop-color="#d6c6b5"/>
+    </radialGradient>
+    <linearGradient id="rice" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f6d379"/>
+      <stop offset=".55" stop-color="#df9c42"/>
+      <stop offset="1" stop-color="#bd6736"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="102" cy="84" r="58" fill="#fff" opacity=".3"/>
+  <circle cx="712" cy="393" r="76" fill="#fff" opacity=".2"/>
+  <ellipse cx="401" cy="404" rx="245" ry="27" fill="#603d2e" opacity=".18" filter="url(#shadow)"/>
+  <ellipse cx="400" cy="250" rx="250" ry="174" fill="#d4c7b9"/>
+  <ellipse cx="400" cy="240" rx="246" ry="170" fill="url(#plate)" stroke="#fff" stroke-width="8"/>
+  <ellipse cx="400" cy="240" rx="215" ry="142" fill="none" stroke="#e1d7c9" stroke-width="3"/>
+  <ellipse cx="384" cy="245" rx="143" ry="97" fill="url(#rice)"/>
+  <g fill="#fff0b0">
+    <ellipse cx="313" cy="208" rx="5" ry="2" transform="rotate(-34 313 208)"/>
+    <ellipse cx="356" cy="184" rx="5" ry="2" transform="rotate(27 356 184)"/>
+    <ellipse cx="405" cy="201" rx="5" ry="2" transform="rotate(-16 405 201)"/>
+    <ellipse cx="450" cy="225" rx="5" ry="2" transform="rotate(40 450 225)"/>
+    <ellipse cx="340" cy="265" rx="5" ry="2" transform="rotate(12 340 265)"/>
+    <ellipse cx="417" cy="284" rx="5" ry="2" transform="rotate(-28 417 284)"/>
+  </g>
+  <g fill="#8f4931">
+    <ellipse cx="333" cy="224" rx="13" ry="7" transform="rotate(25 333 224)"/>
+    <ellipse cx="432" cy="194" rx="12" ry="7" transform="rotate(-24 432 194)"/>
+    <ellipse cx="454" cy="265" rx="13" ry="7" transform="rotate(30 454 265)"/>
+  </g>
+  <path d="M392 224c-22-29-12-55 13-65 25-10 51 9 47 35-3 21-21 34-37 47l-24 47-20-10 25-48Z" fill="#a94e2e" stroke="#813923" stroke-width="5"/>
+  <path d="M417 211c7-21 22-33 34-28 12 5 10 20-5 35l-25 23" fill="#e9a34e"/>
+  <ellipse cx="548" cy="188" rx="50" ry="38" fill="#fff" stroke="#e4d8c8" stroke-width="5"/>
+  <ellipse cx="548" cy="188" rx="39" ry="28" fill="#f6efdb"/>
+  <g fill="#78a05c"><circle cx="533" cy="185" r="5"/><circle cx="556" cy="196" r="5"/><circle cx="565" cy="180" r="4"/></g>
+  <path d="M534 316c18-31 50-37 73-16-3 30-29 51-61 44Z" fill="#e8c64d"/>
+  <path d="M541 321c18-20 38-25 56-17" fill="none" stroke="#fff09a" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#68914b">
+    <path d="M252 315c20-14 40-9 51 5-17 17-38 17-51-5Z"/>
+    <path d="M256 327c18-4 34-1 46 9" fill="none" stroke="#a5c476" stroke-width="3"/>
+  </g>
+</svg>

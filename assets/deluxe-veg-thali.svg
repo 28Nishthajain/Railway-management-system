@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">Deluxe vegetarian meal</title>
+  <desc id="desc">A deluxe vegetarian spread with multiple curries, rice, breads, and a dessert.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f4e3eb"/>
+      <stop offset="1" stop-color="#f8e9cf"/>
+    </linearGradient>
+    <radialGradient id="plate">
+      <stop stop-color="#fffef9"/>
+      <stop offset=".82" stop-color="#f3eee4"/>
+      <stop offset="1" stop-color="#d9d2c8"/>
+    </radialGradient>
+    <radialGradient id="curry">
+      <stop stop-color="#efbd57"/>
+      <stop offset="1" stop-color="#bf6631"/>
+    </radialGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="700" cy="75" r="68" fill="#fff" opacity=".28"/>
+  <circle cx="104" cy="390" r="82" fill="#fff" opacity=".26"/>
+  <ellipse cx="400" cy="405" rx="244" ry="26" fill="#63463d" opacity=".18" filter="url(#shadow)"/>
+  <ellipse cx="400" cy="250" rx="245" ry="174" fill="#d2c8bd"/>
+  <ellipse cx="400" cy="240" rx="242" ry="169" fill="url(#plate)" stroke="#fff" stroke-width="8"/>
+  <ellipse cx="400" cy="240" rx="211" ry="140" fill="none" stroke="#dfd6ca" stroke-width="3"/>
+  <ellipse cx="392" cy="229" rx="81" ry="62" fill="#fff" stroke="#e1d9cc" stroke-width="6"/>
+  <ellipse cx="392" cy="229" rx="69" ry="49" fill="#fff9e8"/>
+  <g fill="#e7dfcf">
+    <ellipse cx="365" cy="214" rx="5" ry="2" transform="rotate(-25 365 214)"/>
+    <ellipse cx="396" cy="198" rx="5" ry="2" transform="rotate(32 396 198)"/>
+    <ellipse cx="423" cy="232" rx="5" ry="2" transform="rotate(-12 423 232)"/>
+    <ellipse cx="377" cy="248" rx="5" ry="2" transform="rotate(40 377 248)"/>
+  </g>
+  <g fill="#f6e8d0" stroke="#ded2c2" stroke-width="5">
+    <circle cx="264" cy="204" r="47"/>
+    <circle cx="521" cy="203" r="47"/>
+    <circle cx="279" cy="309" r="46"/>
+    <circle cx="509" cy="309" r="46"/>
+  </g>
+  <circle cx="264" cy="204" r="36" fill="url(#curry)"/>
+  <g fill="#f3d48c"><rect x="247" y="189" width="16" height="14" rx="4"/><rect x="271" y="207" width="15" height="13" rx="4"/></g>
+  <circle cx="521" cy="203" r="36" fill="#6e9a50"/>
+  <g fill="#b4ce78"><circle cx="510" cy="196" r="8"/><circle cx="532" cy="210" r="9"/></g>
+  <circle cx="279" cy="309" r="35" fill="#dd9c3d"/>
+  <path d="M256 308c14-12 30-12 46-2" fill="none" stroke="#f3d787" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="509" cy="309" r="35" fill="#ad5a37"/>
+  <g fill="#f3d294"><circle cx="496" cy="303" r="7"/><circle cx="518" cy="316" r="8"/></g>
+  <g fill="#e9b65c" stroke="#d5a34d" stroke-width="2">
+    <ellipse cx="371" cy="329" rx="50" ry="28" transform="rotate(-8 371 329)"/>
+    <ellipse cx="435" cy="326" rx="43" ry="25" transform="rotate(10 435 326)"/>
+  </g>
+  <path d="M355 325c16-12 34-13 48-5" fill="none" stroke="#fff0bd" stroke-width="4" stroke-linecap="round"/>
+  <rect x="570" y="250" width="60" height="51" rx="14" fill="#f4e2cc" stroke="#d9cbb9" stroke-width="5"/>
+  <rect x="578" y="258" width="44" height="35" rx="10" fill="#d8819e"/>
+  <circle cx="600" cy="274" r="8" fill="#fff1d2"/>
+  <g fill="#6f9c50">
+    <path d="M201 259c19-13 38-9 49 5-16 16-36 17-49-5Z"/>
+    <path d="M205 271c18-4 32-1 44 9" fill="none" stroke="#9fc276" stroke-width="3"/>
+  </g>
+</svg>

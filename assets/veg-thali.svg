@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">Vegetarian thali</title>
+  <desc id="desc">A colorful illustrated Indian vegetarian meal served on a round plate.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e0f0e2"/>
+      <stop offset="1" stop-color="#f8ead2"/>
+    </linearGradient>
+    <radialGradient id="plate" cx="45%" cy="35%">
+      <stop stop-color="#fffefa"/>
+      <stop offset=".76" stop-color="#f2f1e8"/>
+      <stop offset="1" stop-color="#d5d9ce"/>
+    </radialGradient>
+    <radialGradient id="dal">
+      <stop stop-color="#ffd96b"/>
+      <stop offset="1" stop-color="#e59632"/>
+    </radialGradient>
+    <radialGradient id="curry">
+      <stop stop-color="#e9a94c"/>
+      <stop offset="1" stop-color="#9f4d28"/>
+    </radialGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="92" cy="82" r="52" fill="#fff" opacity=".28"/>
+  <circle cx="718" cy="400" r="80" fill="#fff" opacity=".22"/>
+  <ellipse cx="400" cy="400" rx="245" ry="30" fill="#34513b" opacity=".18" filter="url(#shadow)"/>
+  <ellipse cx="400" cy="260" rx="252" ry="178" fill="#d2d6ca"/>
+  <ellipse cx="400" cy="250" rx="248" ry="174" fill="url(#plate)" stroke="#fff" stroke-width="8"/>
+  <ellipse cx="400" cy="250" rx="220" ry="148" fill="none" stroke="#d9ddd3" stroke-width="3"/>
+  <ellipse cx="390" cy="236" rx="89" ry="69" fill="#fff" stroke="#e1dfd4" stroke-width="7"/>
+  <ellipse cx="390" cy="236" rx="76" ry="57" fill="#fffdf3"/>
+  <g fill="#e8e4d7">
+    <ellipse cx="354" cy="224" rx="4" ry="2" transform="rotate(-24 354 224)"/>
+    <ellipse cx="379" cy="202" rx="4" ry="2" transform="rotate(32 379 202)"/>
+    <ellipse cx="420" cy="217" rx="4" ry="2" transform="rotate(-12 420 217)"/>
+    <ellipse cx="438" cy="246" rx="4" ry="2" transform="rotate(40 438 246)"/>
+    <ellipse cx="393" cy="266" rx="4" ry="2" transform="rotate(-38 393 266)"/>
+    <ellipse cx="363" cy="253" rx="4" ry="2" transform="rotate(20 363 253)"/>
+  </g>
+  <circle cx="275" cy="202" r="57" fill="#c6c6b7"/>
+  <circle cx="275" cy="196" r="54" fill="#fff" stroke="#e5e3d7" stroke-width="5"/>
+  <circle cx="275" cy="196" r="43" fill="url(#dal)"/>
+  <circle cx="255" cy="186" r="5" fill="#e86b37"/>
+  <circle cx="291" cy="209" r="4" fill="#e86b37"/>
+  <path d="M259 209c16-16 30-19 46-13" fill="none" stroke="#5d8a43" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="518" cy="207" r="58" fill="#c6c6b7"/>
+  <circle cx="518" cy="201" r="55" fill="#fff" stroke="#e5e3d7" stroke-width="5"/>
+  <circle cx="518" cy="201" r="44" fill="url(#curry)"/>
+  <g fill="#f3cf83">
+    <rect x="493" y="181" width="19" height="15" rx="5" transform="rotate(-15 493 181)"/>
+    <rect x="523" y="207" width="20" height="15" rx="5" transform="rotate(20 523 207)"/>
+    <rect x="505" y="218" width="16" height="13" rx="4" transform="rotate(-24 505 218)"/>
+  </g>
+  <g fill="#698b49">
+    <ellipse cx="532" cy="179" rx="10" ry="4" transform="rotate(-35 532 179)"/>
+    <ellipse cx="495" cy="211" rx="9" ry="4" transform="rotate(28 495 211)"/>
+  </g>
+  <ellipse cx="304" cy="328" rx="56" ry="40" fill="#fff" stroke="#e5e3d7" stroke-width="5"/>
+  <ellipse cx="304" cy="328" rx="46" ry="31" fill="#68934c"/>
+  <g fill="#91b660">
+    <circle cx="285" cy="322" r="9"/><circle cx="312" cy="338" r="8"/><circle cx="328" cy="315" r="7"/>
+  </g>
+  <g fill="#e4b85c" stroke="#d4a348" stroke-width="2">
+    <ellipse cx="486" cy="326" rx="49" ry="31" transform="rotate(-12 486 326)"/>
+    <ellipse cx="555" cy="321" rx="44" ry="28" transform="rotate(10 555 321)"/>
+  </g>
+  <path d="M456 326c17-17 42-19 58-5M529 320c16-14 37-12 52 1" fill="none" stroke="#f8dfa0" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#a2c478">
+    <path d="M220 271c22-14 42-10 53 5-18 17-39 18-53-5Z"/>
+    <path d="M224 284c19-4 35-1 48 10" fill="none" stroke="#5f8c48" stroke-width="3"/>
+  </g>
+</svg>

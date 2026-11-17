@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">Deluxe grilled chicken meal</title>
+  <desc id="desc">A deluxe meal with grilled chicken, naan, salad, and two dipping sauces.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f2d7ce"/>
+      <stop offset="1" stop-color="#f7e7d0"/>
+    </linearGradient>
+    <radialGradient id="platter">
+      <stop stop-color="#fffdf8"/>
+      <stop offset=".84" stop-color="#eee7dd"/>
+      <stop offset="1" stop-color="#d2c5b8"/>
+    </radialGradient>
+    <linearGradient id="chicken" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e5a152"/>
+      <stop offset=".5" stop-color="#b9542f"/>
+      <stop offset="1" stop-color="#7c3427"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="706" cy="77" r="65" fill="#fff" opacity=".28"/>
+  <circle cx="92" cy="398" r="76" fill="#fff" opacity=".24"/>
+  <ellipse cx="402" cy="405" rx="244" ry="27" fill="#614238" opacity=".18" filter="url(#shadow)"/>
+  <ellipse cx="400" cy="250" rx="248" ry="174" fill="#cfc2b6"/>
+  <ellipse cx="400" cy="240" rx="244" ry="170" fill="url(#platter)" stroke="#fff" stroke-width="8"/>
+  <ellipse cx="400" cy="240" rx="214" ry="142" fill="none" stroke="#ded4ca" stroke-width="3"/>
+  <g fill="#e7b45d" stroke="#d19946" stroke-width="3">
+    <ellipse cx="296" cy="177" rx="67" ry="39" transform="rotate(-13 296 177)"/>
+    <ellipse cx="300" cy="252" rx="62" ry="36" transform="rotate(12 300 252)"/>
+    <ellipse cx="309" cy="321" rx="55" ry="31" transform="rotate(-8 309 321)"/>
+  </g>
+  <g fill="none" stroke="#fff0bf" stroke-width="4" stroke-linecap="round">
+    <path d="M258 175c20-17 43-20 67-8"/>
+    <path d="M267 252c21-15 42-15 65-1"/>
+    <path d="M280 321c15-12 32-14 50-5"/>
+  </g>
+  <g fill="url(#chicken)" stroke="#813b29" stroke-width="5">
+    <path d="M416 176c13-23 42-28 59-11 13 13 8 34-8 47l-25 20-27-12-22 14-13-17 23-22Z"/>
+    <path d="M425 252c18-21 47-20 61 0 10 15 3 35-13 45l-27 17-25-16-25 9-9-20 26-15Z"/>
+  </g>
+  <g fill="#f1c182">
+    <circle cx="426" cy="191" r="5"/><circle cx="446" cy="207" r="5"/><circle cx="456" cy="180" r="5"/>
+    <circle cx="437" cy="269" r="5"/><circle cx="462" cy="285" r="5"/>
+  </g>
+  <g fill="#77a354">
+    <path d="M525 267c22-15 45-10 56 7-18 18-42 19-56-7Z"/>
+    <path d="M536 297c19-13 38-10 48 4-16 16-35 16-48-4Z"/>
+  </g>
+  <g fill="#d45c50"><circle cx="560" cy="241" r="12"/><circle cx="582" cy="278" r="11"/></g>
+  <ellipse cx="525" cy="337" rx="42" ry="31" fill="#fff" stroke="#dfd5c9" stroke-width="5"/>
+  <ellipse cx="525" cy="337" rx="31" ry="21" fill="#dfa64f"/>
+  <ellipse cx="602" cy="334" rx="37" ry="29" fill="#fff" stroke="#dfd5c9" stroke-width="5"/>
+  <ellipse cx="602" cy="334" rx="27" ry="19" fill="#739750"/>
+</svg>

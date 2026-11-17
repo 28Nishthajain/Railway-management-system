@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">Special South Indian meal</title>
+  <desc id="desc">A South Indian spread with mini dosas, idlis, uttapam, and colorful chutneys.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#dcefe5"/>
+      <stop offset="1" stop-color="#f5e5c8"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#78a856"/>
+      <stop offset="1" stop-color="#34744b"/>
+    </linearGradient>
+    <linearGradient id="dosa" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffdc84"/>
+      <stop offset="1" stop-color="#d98b39"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+  </defs>
+  <rect width="800" height="480" rx="28" fill="url(#bg)"/>
+  <circle cx="98" cy="82" r="58" fill="#fff" opacity=".3"/>
+  <circle cx="704" cy="392" r="76" fill="#fff" opacity=".23"/>
+  <ellipse cx="400" cy="404" rx="252" ry="27" fill="#34523a" opacity=".2" filter="url(#shadow)"/>
+  <path d="M124 243c65-117 204-172 342-149 101 17 184 75 213 149-66 117-204 172-342 149-101-17-184-75-213-149Z" fill="#236d47" opacity=".23"/>
+  <path d="M118 230c65-117 204-172 342-149 101 17 184 75 213 149-66 117-204 172-342 149-101-17-184-75-213-149Z" fill="url(#leaf)" stroke="#d8e9bf" stroke-width="7"/>
+  <path d="M151 230c128 3 300 3 488 0M176 192c117 24 258 47 411 77M178 270c123-22 257-47 410-80" fill="none" stroke="#b8d58d" stroke-width="3" opacity=".7"/>
+  <path d="M231 166c6-18 29-25 44-12l53 47c15 14 13 37-3 49l-12 9c-15 11-35 6-44-9l-36-61c-4-7-5-15-2-23Z" fill="url(#dosa)" stroke="#d29648" stroke-width="4"/>
+  <path d="M309 270c4-17 26-25 41-14l49 38c15 12 15 34 1 47l-11 10c-13 12-34 10-44-5l-33-49c-5-8-6-18-3-27Z" fill="url(#dosa)" stroke="#d29648" stroke-width="4"/>
+  <ellipse cx="480" cy="204" rx="67" ry="48" fill="url(#dosa)" stroke="#d29648" stroke-width="5"/>
+  <g fill="#dd7650">
+    <circle cx="455" cy="198" r="6"/><circle cx="482" cy="217" r="6"/><circle cx="507" cy="190" r="6"/>
+  </g>
+  <g fill="#fffef7" stroke="#e7e1d2" stroke-width="4">
+    <circle cx="551" cy="260" r="24"/><circle cx="590" cy="260" r="24"/>
+    <circle cx="570" cy="295" r="24"/>
+  </g>
+  <g fill="#d6d0bf">
+    <circle cx="545" cy="253" r="3"/><circle cx="585" cy="253" r="3"/><circle cx="565" cy="288" r="3"/>
+  </g>
+  <ellipse cx="269" cy="313" rx="40" ry="29" fill="#fff" stroke="#e2ddcf" stroke-width="5"/>
+  <ellipse cx="269" cy="313" rx="29" ry="19" fill="#df873b"/>
+  <ellipse cx="396" cy="326" rx="39" ry="29" fill="#fff" stroke="#e2ddcf" stroke-width="5"/>
+  <ellipse cx="396" cy="326" rx="28" ry="19" fill="#759b51"/>
+  <ellipse cx="493" cy="342" rx="34" ry="26" fill="#fff" stroke="#e2ddcf" stroke-width="5"/>
+  <ellipse cx="493" cy="342" rx="24" ry="17" fill="#e5c65e"/>
+  <g fill="#82a95f">
+    <path d="M202 271c19-13 39-9 49 5-16 16-36 17-49-5Z"/>
+    <path d="M206 283c17-4 32-1 44 9" fill="none" stroke="#c1d996" stroke-width="3"/>
+  </g>
+</svg>
