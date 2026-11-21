@@ -10,6 +10,16 @@
 
 using namespace std;
 
+// OOP OVERVIEW:
+// This program uses classes to group related data and behavior, public class
+// members as the interface, constructors to start application behavior,
+// inheritance to reuse base-class data and methods, and static members to
+// share booking information. It does not currently use virtual functions or
+// runtime polymorphism.
+
+// ---------------------------------------------------------------------------
+// Forward declarations
+// ---------------------------------------------------------------------------
 void clearScreen();
 void printPanel(const string &title, const vector<string> &options);
 void mainMenu();
@@ -18,6 +28,7 @@ void firstPage();
 void displayMenu();
 void foodOptions();
 
+// Clears the console using the command appropriate for the current platform.
 void clearScreen()
 {
 #ifdef _WIN32
@@ -27,6 +38,7 @@ void clearScreen()
 #endif
 }
 
+// Prints a bordered menu panel with a title and a list of options.
 void printPanel(const string &title, const vector<string> &options)
 {
     const int width = 64;
@@ -42,15 +54,19 @@ void printPanel(const string &title, const vector<string> &options)
     cout << "+" << string(width - 2, '-') << "+" << endl;
 }
 
+// Application entry wrapper: constructing it starts the main menu flow.
 class Management
 {
 public:
+    // CONSTRUCTOR: Runs automatically when a Management object is created.
+    // It demonstrates object construction and starts the firstPage() workflow.
     Management()
     {
         firstPage();
     }
 };
 
+// Displays the top-level menu and routes the user to admin or user mode.
 void firstPage()
 {
     clearScreen();
@@ -74,6 +90,7 @@ void firstPage()
 
     switch (choice)
     {
+    // Authenticate the administrator with the fixed demo credentials.
     case 1:
     {
         clearScreen();
@@ -108,6 +125,7 @@ void firstPage()
         break;
     }
 
+    // Create a new demo account or log in with an existing local account.
     case 2:
     {
         clearScreen();
@@ -219,9 +237,17 @@ void firstPage()
     }
 }
 
+// ---------------------------------------------------------------------------
+// Passenger Details
+// ---------------------------------------------------------------------------
+// Stores passenger information and creates the PNR used for a booking.
 class Details
 {
 public:
+    // ENCAPSULATION NOTE: This class keeps passenger-related data and its
+    // information() behavior together. All members are public in this demo,
+    // so callers can access the stored data directly.
+    // Shared passenger and ticket data used across the booking classes.
     static string name[6], gender[6];
     int phoneNo;
     static int age[6];
@@ -230,8 +256,8 @@ public:
     char arr[100];
     static int pnr;
     static int n;
-    // pnr = 1000000000 + (rand() % 9000000000);
 
+    // Generates a PNR and collects information for up to six passengers.
     void information()
     {
         srand(time(NULL));
@@ -280,6 +306,8 @@ public:
     }
 };
 
+// STATIC MEMBER DEFINITIONS: These variables belong to the Details class and
+// are shared by every object rather than stored as a separate copy in each object.
 int Details::cId[6];
 string Details::name[6];
 string Details::gender[6];
@@ -288,14 +316,24 @@ string Details::bp[6];
 int Details::age[6];
 int Details::n;
 
+// ---------------------------------------------------------------------------
+// Train Registration
+// ---------------------------------------------------------------------------
+// Handles destination, train, travel class, and fare selection.
 class registration : public Details
 {
 public:
+    // INHERITANCE: registration is derived from Details, so it can reuse
+    // passenger fields such as name, age, PNR, and pnr.
+    // Stores the selected destination and fare for use in inherited ticket classes.
     static int choice;
     int choice1;
     int back;
+    // STATIC MEMBER: choice and charges are shared by registration objects
+    // and its derived ticket and orderFood objects.
     static float charges;
 
+    // Lets the user choose a destination and then a train and travel class.
     void trains()
     {
         string trainsN[] = {"DELHI", "KOLKATA", "PATNA", "NAGPUR", "JAIPUR", "MUMBAI"};
@@ -881,10 +919,18 @@ public:
 float registration::charges;
 int registration::choice;
 
+// ---------------------------------------------------------------------------
+// Ticket and Booking Records
+// ---------------------------------------------------------------------------
+// Saves, displays, and deletes ticket records in local text files.
 class ticket : public registration
 {
 
 public:
+    // MULTILEVEL INHERITANCE: ticket inherits registration, which itself
+    // inherits Details. This allows ticket to use passenger data, PNR,
+    // destination choice, and charges through the inheritance hierarchy.
+    // Saves each passenger's ticket line and calculates the total booking cost.
     void Bill()
     {
 
@@ -943,6 +989,7 @@ public:
         cout << "Total Cost: " << charges * n;
     }
 
+    // Saves all passenger records to records.txt for later lookup and cancellation.
     void database()
     {
         string destination[6] = "";
@@ -997,6 +1044,7 @@ public:
         }
     }
 
+    // Displays raw ticket records from tickets.txt.
     void dispBill()
     {
 
@@ -1032,6 +1080,7 @@ public:
         ifs.close();
     }
 
+    // Reads and formats the saved booking records for the console.
     void dispDatabase()
     {
         string cpnr,cid,cname,cgen,cdest,ccharge;
@@ -1062,6 +1111,7 @@ public:
         cout<<endl;
     }
 
+    // Removes a booking's records by rebuilding records.txt without the matching PNR.
     void deletedata()
     {
         ticket obj;
@@ -1093,13 +1143,23 @@ public:
     }
 };
 
+// ---------------------------------------------------------------------------
+// E-Catering
+// ---------------------------------------------------------------------------
+// Extends ticket functionality to verify PNRs and process food orders.
 class orderFood : public ticket
 {
 
 public:
+    // INHERITANCE IN ACTION: orderFood is derived from ticket, so it reuses
+    // passenger, PNR, fare, and train-booking functionality without duplicating
+    // the same implementation.
+    // This hierarchy is Details -> registration -> ticket -> orderFood.
+    // Temporary values used while matching a PNR and creating an order.
     string fpnr, cpnr, cname, ccid, cgen, cdest, ccharges;
     int fcharges;
 
+    // Displays the e-catering menu and receipt actions.
     void foodOptions()
     {
         cout << "\n____________________________________________________________________" << endl;
@@ -1143,6 +1203,7 @@ public:
         }
     }
 
+    // Verifies the PNR against records.txt before allowing a food order.
     void getDetails()
     {
         cout << "\n____________________________________________________________________" << endl;
@@ -1180,6 +1241,7 @@ public:
         }
     }
 
+    // Displays the available food items and lets the user place an order.
     void displayMenu()
     {
         fcharges = 0;
@@ -1359,6 +1421,7 @@ public:
         foodOptions();
     }
 
+    // Prints a passenger-specific receipt for the most recent food order.
     void displayFoodReceipt()
     {
 
@@ -1397,6 +1460,7 @@ public:
         foodOptions();
     }
 
+    // Reads and prints all locally stored food orders.
     void displayFoodDatabase()
     {
 
@@ -1422,6 +1486,7 @@ public:
     }
 };
 
+// Admin menu: manages passenger details, train bookings, tickets, and catering.
 void mainMenu()
 {
     int lchoice;
@@ -1579,8 +1644,7 @@ void mainMenu()
     }
 }
 
-// mainmenu2
-
+// User menu: provides booking operations and exits back to the top-level screen.
 void mainMenu2()
 {
     int lchoice;
@@ -1720,6 +1784,7 @@ void mainMenu2()
 
 int main()
 {
+    // Creating Management starts the complete railway application menu flow.
     Management mobj;
     // orderFood f;
     // f.foodOptions();
